@@ -1,7 +1,8 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment } from 'react';
 import { addRoom } from '../utils/ApiFunctions';
 import RoomTypeSelector from '../common/RoomTypeSelector';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 
 const AddRoom = () => {
@@ -101,6 +102,7 @@ const AddRoom = () => {
                  )}
               </div>
               <div className='d-grid d-flex mt-2'>
+                <Link to={"/existing-rooms"} className="btn btn-outline-info">Back</Link>
                 <button className='btn-outline-primry mi-5'>
                     Save Room
                 </button>

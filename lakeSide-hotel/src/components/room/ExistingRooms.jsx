@@ -3,7 +3,7 @@ import { getAllRooms, deleteRoom } from '../utils/ApiFunctions';
 import RoomFilter from '../common/RoomFilter';
 import RoomPaginator from '../common/RoomPaginator';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaTrashAlt,FaEye, FaEdit } from "react-icons/fa";
+import { FaTrashAlt,FaEye, FaEdit, FaPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const ExistingRooms = () => {
@@ -85,11 +85,16 @@ const ExistingRooms = () => {
         ) : (
             <div>
                 <section className='mt-5 mb-5 container'>
-                    <div className='d-flex justify-content-center mb-3 mt-5'>
+                    <div className='d-flex justify-content-between mb-3 mt-5'>
                         <h2>Existing Rooms</h2>
                     </div>
-                    <div className="col-md-6 mb-3 mb-md-0"> 
-                        <RoomFilter data={rooms} setFilteredData={setFilteredRooms}/>
+                    <div className='row'>
+                        <div className="col-md-6 mb-3 mb-md-0"> 
+                            <RoomFilter data={rooms} setFilteredData={setFilteredRooms}/>
+                        </div>
+                        <div className='col-md-6 d-flex justify-content-end'>
+                            <Link to={"/add-room"}> <FaPlus/> Add Room </Link>
+                        </div>
                     </div>
                     <table className='table table-bordered table-hover'>
                         <thead>

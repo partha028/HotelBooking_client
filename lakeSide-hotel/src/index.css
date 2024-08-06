@@ -9,6 +9,7 @@ body {
 /* Navigation bar definitions */
  .navbar{
   padding: 0;
+  width: 100%;
  }
  .navbar .navbar-nav .nav-link{
   padding: 1em;
