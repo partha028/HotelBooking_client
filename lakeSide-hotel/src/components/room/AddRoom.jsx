@@ -59,52 +59,70 @@ const AddRoom = () => {
 
   return (
     <Fragment>
-      <section className='container, mt-5 mb-5'>
-        <div className='row justify-content-centere'>
-          <div className='col-md-8 col-lg-6'>
-            <h2 className='mt-5 mb-2'>Add a New Room</h2>
-            {successMessage && (<div className='alert alert-success fade show'>{successMessage}</div>)}
-            {errorMessage && (<div className='alert alert-danger fade show'>{errorMessage}</div>)}
+      <section className="container, mt-5 mb-5">
+        <div className="row justify-content-center">
+          <div className="col-md-8 col-lg-6">
+            <h2 className="mt-5 mb-2">Add a New Room</h2>
+            {successMessage && (
+              <div className="alert alert-success fade show">
+                {successMessage}
+              </div>
+            )}
+            {errorMessage && (
+              <div className="alert alert-danger fade show">{errorMessage}</div>
+            )}
             <form onSubmit={handleSubmit} action="">
-              <div className='mb-3'>
-                <label htmlFor="roomType" className='form-label'>Room Type</label>
+              <div className="mb-3">
+                <label htmlFor="roomType" className="form-label">
+                  Room Type
+                </label>
                 <div>
-                  <RoomTypeSelector handleRoomInputChange= {handleRoomInputChange} newRoom= {newRoom}/>
+                  <RoomTypeSelector
+                    handleRoomInputChange={handleRoomInputChange}
+                    newRoom={newRoom}
+                  />
                 </div>
               </div>
-              <div className='mb-3'>
-                <label htmlFor="roomPrice" className='form-label'>Room Price</label>
-                <input 
+              <div className="mb-3">
+                <label htmlFor="roomPrice" className="form-label">
+                  Room Price
+                </label>
+                <input
                   type="number"
-                  className='form-control' 
-                  required id='roomPrice' 
-                  name='roomPrice'
+                  className="form-control"
+                  required
+                  id="roomPrice"
+                  name="roomPrice"
                   value={newRoom.roomPrice}
                   onChange={handleRoomInputChange}
                 />
               </div>
-              <div className='mb-3'>
-                <label htmlFor="photo" className='form-label'>Room Photo</label>
-                <input 
+              <div className="mb-3">
+                <label htmlFor="photo" className="form-label">
+                  Room Photo
+                </label>
+                <input
                   type="file"
-                  id='photo'
-                  name='photo'
-                  className='form-control'
+                  id="photo"
+                  name="photo"
+                  className="form-control"
                   onChange={handleImageChange}
-                 />
-                 {imagePreview && (
-                  <img 
-                    src={imagePreview} 
-                    alt="Preview Room Photo" 
-                    style={{maxWidth: "400px", maxHeight: "400px"}}
-                    className='mb-3'
+                />
+                {imagePreview && (
+                  <img
+                    src={imagePreview}
+                    alt="Preview Room Photo"
+                    style={{ maxWidth: "400px", maxHeight: "400px" }}
+                    className="mb-3"
                   />
-                 )}
+                )}
               </div>
-              <div className='d-grid d-flex mt-2'>
-                <Link to={"/existing-rooms"} className="btn btn-outline-info">Back</Link>
-                <button className='btn-outline-primry mi-5'>
-                    Save Room
+              <div className="d-flex justify-content-between mt-2">
+                <Link to="/existing-rooms" className="btn btn-outline-info">
+                  Back
+                </Link>
+                <button className="btn btn-outline-primary ml-3">
+                  Save Room
                 </button>
               </div>
             </form>
@@ -112,7 +130,7 @@ const AddRoom = () => {
         </div>
       </section>
     </Fragment>
-  )
+  );
 }
 
 export default AddRoom
