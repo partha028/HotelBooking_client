@@ -83,7 +83,7 @@ body {
 
 
 .parallax {
-  background-image: url("./assets/images/parrall.jpg");
+  background-image: url("./assets/images/services2.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -95,11 +95,30 @@ body {
   position: relative;
   height: 150px;
   background-size: cover;
-  background-image: url("./assets/images/services4.jpg");
+  /* background-image: url("./assets/images/services3.jpg"); */
   background-position: center center;
 }
+
+.custom-section {
+  display: flex;
+  justify-content: flex-end; 
+  padding: 0 20px;
+}
+
+.custom-link {
+  padding: 10px 30px; 
+  text-decoration: none;
+  color: rgb(169, 77, 123);;
+  border: 20px;
+  text-align: start;
+  font-weight: bold;
+  font-size: large;
+  
+}
+
+
 .header-title {
-  color: #fff;
+  color: white;
   font-size: 4rem;
   align-content: center;
 }
@@ -190,7 +209,7 @@ body {
 
 /* The header banner */
 .header-banner {
-  background-image:  url("./assets/images/services-1.jpg");
+  background-image:  url("./assets/images/service1.jpg");
    background-size: cover;
   background-position: center;
    position: relative;

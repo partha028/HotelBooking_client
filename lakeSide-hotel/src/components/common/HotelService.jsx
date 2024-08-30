@@ -7,7 +7,7 @@ const HotelService = () => {
   return (
     <>
         <Container className='mb-2'>
-            <Header title={"Our Services"}/>
+            {/* <Header className='mbtitle' title={"Our Services"}/> */}
             <Row>
                 <h4 className='text-center'>
                     Services at <span className='hotel-color'> Lakeside Hotel </span>

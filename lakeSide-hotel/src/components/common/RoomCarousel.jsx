@@ -26,8 +26,8 @@ const RoomCarousel = () => {
         return <div className='text-danger mb-5 mt-5'>Error : {errorMessage}</div>
     }
   return (
-    <section className='bg-light mb-5 mt-5 shadow'>
-        <Link to={'/browse-all-rooms'} className='hotel-color text-start'>
+    <section className='bg-light mb-5 mt-5 shadow w-50 mx-auto'>
+        <Link to={'/browse-all-rooms'} className='custom-link'>
             Browse all rooms
         </Link>
 
@@ -39,10 +39,10 @@ const RoomCarousel = () => {
                             {rooms.slice(index * 4, index *4 + 4).map((room)=> (
                                 <Col key={room.id} className='mb-4' xs={12} md={6} lg={3}>
                                     <Card>
-                                        <Link to={`/book-room/${room.id}`}>
+                                        <Link to={`/browse-all-rooms/book-room/${room.id}`}>
                                             <Card.Img
                                             variant='top'
-                                            src={`data:image/png;base65,${room.photo}`}
+                                            src={`data:image/png;base64,${room.photo}`}
                                             alt='Room photo'
                                             className='w-100'
                                             style={{height:'200px'}}
@@ -53,7 +53,7 @@ const RoomCarousel = () => {
                                             <Card.Title className='room-price'> ${room.roomPrice}</Card.Title>
 
                                             <div className='flex-shrink-0'>
-                                                <Link className='btn btn-sm btn-hotel' to={`/book-room/${room.id}`}>
+                                                <Link className='btn btn-sm btn-hotel' to={`/browse-all-rooms/book-room/${room.id}`}>
                                                     Book Now
                                                 </Link>
                                             </div>

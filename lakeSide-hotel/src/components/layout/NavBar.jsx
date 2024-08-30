@@ -14,7 +14,7 @@ const NavBar = () => {
  
       <nav className="navbar navbar-expand-lg bg-body-tertiary px-5 shadow sticky-top">
       <div className='container-fluid'>
-        <Link className='navbar-brand' to="/">
+        <Link className='navbar-brand' to="/home">
           <span className='hotel-color'>LakeSide Hotel</span>
         </Link> 
         <button 
@@ -42,8 +42,8 @@ const NavBar = () => {
           </ul>
           <ul className='d-flex navbar-nav'>
             <li className='nav-item'>
-              <NavLink className='nav-link' to='/find-booking'>
-                Find my Booking
+              <NavLink className='nav-link' to='/existing-rooms'>
+                Existing Rooms
               </NavLink>
             </li>
             <li className='nav-item dropdown'>
@@ -51,9 +51,9 @@ const NavBar = () => {
                              title="Account" 
                              id="basic-nav-dropdown"
                              onClick={handleAccountClick}>
-                    <NavDropdown.Item as={Link} to='/login'>Login</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/'>Login</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to='/profile'>Profile</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/logout'>Logout</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/'>Logout</NavDropdown.Item>
                 </NavDropdown>
             </li>
           </ul>

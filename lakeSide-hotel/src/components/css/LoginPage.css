@@ -1,0 +1,68 @@
+/* src/components/LoginPage.css */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient( #007bff, #00c094); 
+  padding-bottom: 0% !important;
+  margin-bottom: 0% !important;
+}
+
+.login-page h2 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: white; /* Change text color to match background */
+}
+
+.login-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.8); /* Add background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.login-page label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #fff; /* Change text color to match background */
+}
+
+.login-page input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.login-page button {
+  padding: 10px;
+  background-color: #fff; /* Change background color to white */
+  color: #007bff; /* Change text color to blue */
+  border: 1px solid #007bff; /* Add a border */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-page button:hover {
+  background-color: #f2f2f2; /* Lighter background on hover */
+}
+
+.error-message {
+  color: #ff4d4f; /* Red error message */
+  margin-top: 10px;
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
+}

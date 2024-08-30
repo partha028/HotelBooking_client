@@ -8,7 +8,7 @@ import { Form, FormControl } from 'react-bootstrap';
 const BookingForms = () => {
   const [isValidated, setIsvalidated] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errorMessage, setErroMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [roomPrice, setRoomPrice] = useState(0);
   const [booking, setBooking] = useState({
     guestName: '',
@@ -30,7 +30,7 @@ const BookingForms = () => {
   const handleInputChange = (e) => {
     const{name, value} = e.target;
     setBooking({...booking, [name]: value});
-    setErroMessage("");
+    setErrorMessage("");
   }
 
   const getRoomPriceById = async(roomId) =>{
@@ -51,22 +51,25 @@ const BookingForms = () => {
     const checkOutDate = moment(booking.checkOutDate);
     const diffInDays = checkOutDate.diff(checkInDate, 'days');
     const pricePerDay = roomPrice ? roomPrice : 0;
+    console.log('calculatePayment diffInDays', diffInDays);
+    console.log('calculatePayment pricePerDay', pricePerDay);
     return diffInDays * pricePerDay;
   }
 
   const isGuestCountValid = () =>{
+    
     const adultCount = parseInt(booking.numberOfAdults);
-    const childrenCount = parseInt(booking.numberOfChildren);
+    const childrenCount = parseInt(booking.numberOfChildren) || 0;
     const totalCount = adultCount + childrenCount;
     return totalCount >=1 && adultCount >= 1;
   }
 
   const isCheckOutDateValid = () => {
     if(!moment(booking.checkOutDate).isSameOrAfter(moment(booking.checkInDate))){
-      setErroMessage('Check-out date should come after check-in date');
+      setErrorMessage('Check-out date should come after check-in date');
       return false;
     }else{
-      setErroMessage('');
+      setErrorMessage('');
       return true;
     }
   }
@@ -74,22 +77,23 @@ const BookingForms = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    if(form.checkValidity() === false || !isGuestCountValid() || !isCheckOutDateValid()){
+    if(!isGuestCountValid() || !isCheckOutDateValid()){
       e.stopPropagation();
     }else{
       setIsSubmitted(true);
+      setIsvalidated(true);
     }
   }
 
-  const handleBooking = async() =>{
-    try{
+  const handleBooking = async () => {
+    try {
+      console.log('inside the handle booking', roomId, 'booking: ', booking);
       const confirmationCode = await bookRoom(roomId, booking);
       setIsSubmitted(true);
-      navigate('/',{state: {message: confirmationCode}});
-    }
-    catch(error){
-      setErroMessage(error.errorMessage);
-      navigate('/',{state: {message: errorMessage}});
+      navigate('/', { state: { message: confirmationCode } });
+    } catch (error) {
+      setErrorMessage(error.errorMessage);  
+      navigate('/', { state: { message: error.errorMessage } }); 
     }
   }
 
@@ -216,7 +220,7 @@ const BookingForms = () => {
             {isSubmitted && (
               <BookingSummary
               booking={booking}
-              payment={calculatePayment}
+              payment={calculatePayment()}
               isFormValid={isValidated}
               onConfirm={handleBooking}/>
             )}

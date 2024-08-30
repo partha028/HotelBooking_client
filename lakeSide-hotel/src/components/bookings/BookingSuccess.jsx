@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
 
 const BookingSuccess = () => {
     const location = useLocation();

@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
+  console.log('isFormValid from booking summary', isFormValid);
     const checkInDate = moment(booking.checkInDate);
     const checkOutDate = moment(booking.checkOutDate);
     const numOfDays = checkOutDate.diff(checkInDate, "days");
     const[isBookingConfirmed, setIsBookingConfirmed] = useState(false);
     const[isProcessingPayment, setIsProcessingPayment] = useState(false); 
-    const navigate = usenavigate();
+    const navigate = useNavigate();
 
     const handleConfirmBooking =() =>{
+      console.log('inside the handle confirm booking before timeout');
       setIsProcessingPayment(true);
       setTimeout(() => {
+        console.log('inside the handle confirm booking timeout');
         setIsProcessingPayment(false);
         setIsBookingConfirmed(true);
         onConfirm()
@@ -37,7 +42,7 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
         <strong>Adult{booking.numberOfAdults > 1 ? 's':''} : {booking.numberOfAdults}</strong>
       </div>
       <div>
-        <h5>Number of Guests</h5>
+        <h5>Number of Guests</h5> 
         <strong>Children : {booking.numberOfChildren}</strong>
       </div>
       {payment > 0 ? (
@@ -53,7 +58,7 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
                   className='spinner-border spinner-border-sm mr-2 '
                   role='status'
                   aria-hidden = 'true'></span>
-                  Booking COnfirmed, redirecting to payment....
+                  Booking Confirmed, redirecting to payment....
                 </>
               ): (
                 'Confirm booking and proceed to payments'

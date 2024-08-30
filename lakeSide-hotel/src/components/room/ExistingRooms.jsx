@@ -60,7 +60,6 @@ const ExistingRooms = () => {
   const handleDelete = async(roomId) => {
     try{
         const result = await deleteRoom(roomId);
-        console.log('result',result);
         if(result.data === ""){
             setSuccessMessage(`Room No ${roomId} was deleted successfully`);
             fetchRooms();            
